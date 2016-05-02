@@ -1,0 +1,9 @@
+# temp files
+*~
+\#*\#
+
+# object files
+*.o
+
+# final compiled program
+life
