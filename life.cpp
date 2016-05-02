@@ -20,10 +20,17 @@ Life::~Life() {
   delete[] board;
 }
 
-void Life::set_on(unsigned int row, unsigned int col) {
-  if (row <= rows && col <= cols) {
-    board[row * cols + col] = LIVE;
-  }
+bool Life::get(unsigned int row, unsigned int col) {
+  row %= rows;
+  col %= cols;
+  return board[row * cols + col];
+}
+  
+
+void Life::set(unsigned int row, unsigned int col, bool value) {
+  row %= rows;
+  col %= cols;
+  board[row * cols + col] = value;
 }
 
 void Life::clear() {
@@ -53,11 +60,11 @@ void Life::fpentamino() {
   */
   unsigned int center_row = rows / 2;
   unsigned int center_col = cols / 2;
-  set_on(center_row - 1, center_col);
-  set_on(center_row - 1, center_col + 1);
-  set_on(center_row, center_col - 1);
-  set_on(center_row, center_col);
-  set_on(center_row + 1, center_col);
+  set(center_row - 1, center_col, LIVE);
+  set(center_row - 1, center_col + 1, LIVE);
+  set(center_row, center_col - 1, LIVE);
+  set(center_row, center_col, LIVE);
+  set(center_row + 1, center_col, LIVE);
 }
 
 void Life::random() {

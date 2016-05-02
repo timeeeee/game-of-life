@@ -12,7 +12,8 @@ class Life {
   Life(unsigned int num_rows, unsigned int num_cols);
   ~Life();
   void clear();
-  void set_on(unsigned int row, unsigned int col);
+  bool get(unsigned int row, unsigned int col);
+  void set(unsigned int row, unsigned int col, bool value);
   void get_string(char * string);
   void fpentamino();
   void random();
