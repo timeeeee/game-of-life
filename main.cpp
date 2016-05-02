@@ -18,12 +18,15 @@ int main() {
   keypad(stdscr, TRUE);
 
   // do fun stuff here
-  int rows, cols;
-  getmaxyx(stdscr, rows, cols);
+  int scr_rows, scr_cols;
+  getmaxyx(stdscr, scr_rows, scr_cols);
+
+  int life_rows = scr_rows - 1;
+  int life_cols = scr_cols;
 
   char *life_string;
-  life_string = new char[rows * cols];
-  Life board(rows, cols);
+  life_string = new char[life_rows * life_cols];
+  Life board(life_rows, life_cols);
 
   bool quit = false;
   bool play = false;
