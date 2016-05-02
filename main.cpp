@@ -24,7 +24,9 @@ int main() {
   char *life_string;
   life_string = new char[rows * cols];
   Life board(rows, cols);
+
   bool quit = false;
+  bool play = false;
 
   while (!quit) {
     int ch = getch();
@@ -38,9 +40,15 @@ int main() {
     case 'f':
       board.fpentamino();
       break;
+    case 'p':
+      play = !play;
+      break;
     }
     
-    board.step();
+    if (play) {
+      board.step();
+    }
+
     board.get_string(life_string);
     move(0, 0);
     addstr(life_string);
