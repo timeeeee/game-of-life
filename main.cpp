@@ -24,10 +24,21 @@ int main() {
   char *life_string;
   life_string = new char[rows * cols];
   Life board(rows, cols);
+  bool quit = false;
 
-  while (true) {
+  while (!quit) {
     int ch = getch();
-    if (ch == 'q') break;
+    switch (ch) {
+    case 'q':
+      quit = true;
+      break;
+    case 'r':
+      board.random();
+      break;
+    case 'f':
+      board.fpentamino();
+      break;
+    }
     
     board.step();
     board.get_string(life_string);
