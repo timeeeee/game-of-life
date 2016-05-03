@@ -4,6 +4,7 @@
 class Life {
  private:
   bool * board;
+  unsigned char * neighbor_counts;
   unsigned int rows;
   unsigned int cols;
   unsigned int length;
@@ -12,8 +13,9 @@ class Life {
   Life(unsigned int num_rows, unsigned int num_cols);
   ~Life();
   void clear();
-  bool get(unsigned int row, unsigned int col);
-  void set(unsigned int row, unsigned int col, bool value);
+  bool get(int row, int col);
+  void set(int row, int col, bool value);
+  void flip(int row, int col);
   void get_string(char * string);
   void fpentamino();
   void random();
