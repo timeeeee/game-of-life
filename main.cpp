@@ -3,8 +3,6 @@
 #include "life.h"
 
 int main() {
-  // ----- ncurses setup -----
-
   // initialize ncurses screen
   initscr();
 
@@ -13,6 +11,9 @@ int main() {
 
   // don't echo typed characters
   noecho();
+
+  // Don't wait if a character isn't pressing a key
+  nodelay(stdscr, TRUE);
 
   // enable capture of special keys
   keypad(stdscr, TRUE);
@@ -31,9 +32,11 @@ int main() {
   bool quit = false;
   bool play = false;
 
+  int input_char = 0;
+
   while (!quit) {
-    int ch = getch();
-    switch (ch) {
+    input_char = getch();
+    switch (input_char) {
     case 'q':
       quit = true;
       break;
@@ -58,6 +61,9 @@ int main() {
     refresh();
   }
   
+  // Delete life_string
+  delete[] life_string;
+
   // restore terminal settings
   endwin();
 
