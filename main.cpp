@@ -1,4 +1,5 @@
 #include <ncurses.h>
+#include <ctime>
 
 #include "life.h"
 
@@ -33,6 +34,10 @@ int main() {
   bool play = false;
 
   int input_char = 0;
+  clock_t last_frame_clock = 0;
+  clock_t now;
+  int frame_length_ms = 25;
+  int dt;  // This will hold the time since the last frame
 
   while (!quit) {
     input_char = getch();
@@ -52,7 +57,12 @@ int main() {
     }
     
     if (play) {
-      board.step();
+      now = clock();
+      dt = 1000 * (now - last_frame_clock) / CLOCKS_PER_SEC;
+      if (dt > frame_length_ms) {
+	board.step();
+	last_frame_clock = now;
+      }
     }
 
     board.get_string(life_string);
