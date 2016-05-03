@@ -51,6 +51,9 @@ int main() {
     case 'f':
       board.fpentamino();
       break;
+    case 'g':
+      board.glider();
+      break;
     case 'p':
       play = !play;
       break;

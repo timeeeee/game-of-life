@@ -68,11 +68,28 @@ void Life::fpentamino() {
   */
   int center_row = rows / 2;
   int center_col = cols / 2;
-  set(center_row - 1, center_col, LIVE);
-  set(center_row - 1, center_col + 1, LIVE);
-  set(center_row, center_col - 1, LIVE);
-  set(center_row, center_col, LIVE);
-  set(center_row + 1, center_col, LIVE);
+  set(center_row - 1, center_col, true);
+  set(center_row - 1, center_col + 1, true);
+  set(center_row, center_col - 1, true);
+  set(center_row, center_col, true);
+  set(center_row + 1, center_col, true);
+}
+
+void Life::glider() {
+  clear();
+
+  /*
+     x
+      x
+    xxx
+  */
+  int center_row = rows / 2;
+  int center_col = cols / 2;
+  set(center_row - 1, center_col, true);
+  set(center_row, center_col + 1, true);
+  set(center_row + 1, center_col - 1, true);
+  set(center_row + 1, center_col, true);
+  set(center_row + 1, center_col + 1, true);
 }
 
 void Life::random() {

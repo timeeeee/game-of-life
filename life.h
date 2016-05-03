@@ -18,6 +18,7 @@ class Life {
   void flip(int row, int col);
   void get_string(char * string);
   void fpentamino();
+  void glider();
   void random();
   void random(float r);
   void step();
